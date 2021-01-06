@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/sinseunghyeon/Desktop/embracelabs/test/vagrant/django","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}

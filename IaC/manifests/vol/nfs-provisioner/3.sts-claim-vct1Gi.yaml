@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: add-svr-pvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: add-svr-pvc
+  serviceName: add-svr-pvc
+  template:
+    metadata:
+      labels:
+        app: add-svr-pvc
+    spec:
+      containers:
+      - name: echo-nginx
+        image: sysnet4admin/echo-nginx
+        volumeMounts:
+        - name: vct-svr-vol # same name of volumes's name
+          mountPath: /pvc-vol
+  volumeClaimTemplates:
+  - metadata:
+      name: vct-svr-vol
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: "nfs-svr-sc"
+      resources:
+        requests:
+          storage: 1Gi
